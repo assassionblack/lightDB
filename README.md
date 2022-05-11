@@ -42,11 +42,10 @@ Versions release note:
 PreInstallation
 ===============
 
-    copy logging_conf.json, settings.toml from src/settings/ to ~/.config/lightDB/
-    copy report.html,
-            report-category.html,
-            report-custom.html,
-            report-magazine.html from src/templates/ to ~/.config/lightDB
+    copy logging_conf.json, settings.toml
+                from src/settings/ to ~/.config/lightDB/
+    copy report.html, report-category.html, report-custom.html, report-magazine.html
+                from src/templates/ to ~/.config/lightDB
     
 Setup
 =====
