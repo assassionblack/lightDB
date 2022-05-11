@@ -5,6 +5,14 @@ lightDB
 
 ============================================
 
+Platform
+========
+    linux
+    may be unix based systems
+        tested on:
+            linuxmint
+            archlinux
+
 Features
 ========
 
