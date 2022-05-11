@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Отчет</title>
+    <style>
+        body{
+            font: sans-serif;
+        }
+        h1{
+            color: {{ magazine_style.get("color") }};
+            font-weight: {{ magazine_style.get("font-weight") }};
+            text-indent: {{ magazine_style.get("text-indent") }};
+            font-size: {{ magazine_style.get("font-size") }};
+        }
+        h2{
+            color: {{ category_style.get("color") }};
+            text-indent: {{ category_style.get("text-indent") }};
+            font-style: {{ category_style.get("font-style") }};
+            font-size: {{ category_style.get("font-size") }};
+        }
+        table{
+            border: {{ table_style.get("border") }};
+            border-collapse: {{ table_style.get("border-collapse") }};
+        }
+        tr{
+            height: {{ tr_style.get("height") }};
+        }
+        td, th{
+            border: {{ td_th.get("border") }};
+            font-size: {{ td_th.get("font-size") }};
+        }
+    </style>
+</head>
+<body>
+    {% for magazine in db_handler.get_magazines() -%}
+    <h1>{{ magazine -}}</h1>
+    {% for category in db_handler.get_categories_for_magazine(magazine) -%}
+    <h2>{{ category -}}</h2>
+    <table>
+        <tr>
+            {% for name in names_columns -%}
+            <th>{{ name -}}</th>
+            {% endfor -%}
+        </tr>
+        {% for product in db_handler.get_products(magazine, category) -%}
+        <tr>
+            <td width="120">{{ product.firm }}</td>
+            <td width="80">{{ product.kod_tovara }}</td>
+            <td width="200">{{ product.opisanie }}</td>
+            <td width="200">{{ product.razmery }}</td>
+            <td>{{ product.tsena }}</td>
+            <td>{{ product.raspr }}</td>
+        </tr>
+        {% endfor -%}
+    </table>
+    {% endfor -%}
+    {% endfor -%}
+</body>
+</html>

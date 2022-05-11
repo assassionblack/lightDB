@@ -1,0 +1,66 @@
+name = "lightDB"
+
+[sizes]
+width-navbar = 300
+height-navbar = 31
+width-table = 1000
+height-table = 650
+
+[styles]
+[[styles.navbar]]
+all-font = "Calibri"
+all-font-size = 10
+tree-foreground = "blue"
+heading-font = "Calibri"
+heading-font-size = 10
+heading-font-style = "bold"
+heading-foreground = "red"
+
+[[styles.table]]
+header-bg = "yellow"
+header-font = "Calibri"
+header-font-size = 10
+header-font-style = "bold"
+font = "Calibri"
+font-size = 10
+font-style = "normal"
+
+[names-product-columns]
+to-form = [ "firma", "kod_tovara", "opisanie", "razmery", "tsena", "raspr", "category", "magazin", "id",]
+to-form-ru = [ "Фирма", "код", "описание", "размеры", "цена", "р", "категория", "магазин", "id",]
+to-report = [ "фирма", "код", "описание", "размеры", "цена", "р",]
+
+[report-style]
+[[report-style.magazine]]
+color = "red"
+font-weight = "bold"
+text-indent = "50px"
+font-size = 22
+
+[[report-style.category]]
+color = "blue"
+text-indent = "100px"
+font-style = "italic"
+font-size = 18
+
+[[report-style.table]]
+border = "1px solid powderblue"
+border-collapse = "collapse"
+
+[[report-style.tr]]
+height = 10
+
+[[report-style.td-th]]
+border = "1px solid powderblue"
+font-size = 12
+
+[report-file]
+output-name = "report"
+
+[copy]
+ssh = "false"
+
+[ssh]
+server = "192.168.1.100"
+user = "guest"
+output-file = "base.db"
