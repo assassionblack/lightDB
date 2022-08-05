@@ -1,7 +1,7 @@
 import os.path
 import unittest
 
-from src import DbHandler, db_window, Product, Category, Magazine
+from src import DbHandler, Product, Category, Magazine
 from src.settings import configs
 
 
@@ -10,7 +10,7 @@ class DbHandlerTestCase(unittest.TestCase):
         configs.DB_NAME = "source/base.db"
         if os.path.exists(configs.DB_NAME):
             os.remove(configs.DB_NAME)
-        db_window.new_db()
+        DbHandler().new_db()
         self.db_handler = DbHandler()
 
     def test_created_db(self):
