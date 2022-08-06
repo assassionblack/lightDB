@@ -119,12 +119,16 @@ class Table(Frame):
             if event[0] == self.sheet.get_total_rows() - 1:
                 self.create_new_product(edited_product)
             else:
-                status = self.db_handler.update_product(edited_product)
+                if event[2] == "Escape":
+                    status = "нажата esc, изменение отменено"
+                else:
+                    status = self.db_handler.update_product(edited_product)
                 logging.info(f"товар: {edited_product} обновлен: поле "
                              f"{edited_product.column} изменено на {edited_product.value}")
                 self.status.status.set(status)
         except Exception as exc:
-            status = f"exception in edit_cell_event: {exc}, event:{event}"
+            status = f"exception in edit_cell_event: {exc}, event: {event}, " \
+                     f"column: {edited_product.column}, value: {edited_product.value}"
             self.status.status.set(status)
             logging.error(status)
 
