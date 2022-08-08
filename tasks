@@ -1,7 +1,8 @@
-add table 'deleting products':
+add table 'changing products':
     add columns from tovars
     add column date of changed
-    add methods to adding products by deleting and changing in products
+    add methods to adding products by deleting and changing and adding in products
     add methods to visualize table
-    add variants to show by weak, month, season or year
+    add variants to show sold tovars
+    add variants to show changes by weak, month, season or year
     add method to compute profits

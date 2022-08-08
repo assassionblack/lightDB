@@ -1,6 +1,5 @@
 """module for creating common window"""
 import os
-import sqlite3
 import sys
 from tkinter import TOP, X, LEFT, BOTH
 
@@ -12,7 +11,7 @@ def window(status, top, navigation_panel, table_panel):
     """
     function for windowing Navbar, Table, Toolbar
     """
-    if configs.DB_NAME not in ("", ()):
+    if configs.DB_NAME in ("", ()):
         if len(sys.argv) > 1:
             if os.path.exists(sys.argv[1]):
                 configs.DB_NAME = sys.argv[1]
