@@ -7,6 +7,10 @@ import shutil
 from tkinter import Frame, Menu, filedialog, StringVar
 from tkinter.messagebox import askyesno
 
+import paramiko.ssh_exception
+from paramiko.client import SSHClient
+from scp import SCPClient
+
 from src.report import Report
 from src.settings import configs
 
@@ -100,14 +104,24 @@ class CommonMenu(Frame):
         message = "Вы уверены, что хотите закрыть это окно?"
         if askyesno(message=message, parent=self.parent):
             if configs.settings.get('copy').get('ssh') == 'true':
-                command = "scp '" + configs.DB_NAME + "' " \
-                          + configs.settings.get("ssh").get("user") \
-                          + "@" + configs.settings.get("ssh").get("server") \
-                          + ":" + configs.settings.get("ssh").get("output-file")
-                os.system(command)
-                status_var = "db copied onto local server..."
-                self.status.status.set(status_var)
-                logging.info(status_var)
+                try:
+                    ssh = SSHClient()
+                    ssh.load_system_host_keys()
+                    ssh.connect(configs.settings.get("ssh").get("server"),
+                                username=configs.settings.get("ssh").get("user"))
+
+                    with SCPClient(ssh.get_transport()) as scp:
+                        scp.put('/home/assassion/ideas', 'ideas2')
+                        scp.get('ideas2')
+                    status_var = "база данных отправлена на сервер"
+                    self.status.status.set(status_var)
+                    logging.info(status_var)
+                except paramiko.ssh_exception.NoValidConnectionsError as exc:
+                    status_var = f"бд не отправлена на сервер, соединение не установлено:" \
+                                 f"\n\r{exc}"
+                    self.status.status.set(status_var)
+                    logging.error(status_var)
+
             from src.db_window import close_db
             close_db()
             status_var = "соединение с бд закрыто\nпрограмма закрыта"

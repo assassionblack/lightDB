@@ -64,6 +64,7 @@ class Table(Frame):
 
         self.add_new_line()
 
+        self.sheet.set_all_cell_sizes_to_text(False)
         if not widths_columns or widths_columns < self.sheet.get_column_widths():
             self.sheet.set_all_cell_sizes_to_text()
             widths_columns = self.sheet.get_column_widths()
