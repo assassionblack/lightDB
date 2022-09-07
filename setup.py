@@ -18,7 +18,7 @@ setup(
   author='assassion',
   author_email='assassionblack666@gmail.com',
   keywords=['lightDB', 'database', 'light database'],
-  install_requires=['jinja2', 'logging', 'toml'],
+  install_requires=['jinja2', 'logging', 'toml', 'paramiko', 'scp'],
   classifiers=[
     'Development Status :: 1 - Testing',
     'Intended Audience :: small business',

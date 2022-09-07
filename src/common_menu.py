@@ -7,8 +7,8 @@ import shutil
 from tkinter import Frame, Menu, filedialog, StringVar
 from tkinter.messagebox import askyesno
 
-import paramiko.ssh_exception
 from paramiko.client import SSHClient
+from paramiko.ssh_exception import NoValidConnectionsError
 from scp import SCPClient
 
 from src.report import Report
@@ -116,7 +116,7 @@ class CommonMenu(Frame):
                     status_var = "база данных отправлена на сервер"
                     self.status.status.set(status_var)
                     logging.info(status_var)
-                except paramiko.ssh_exception.NoValidConnectionsError as exc:
+                except NoValidConnectionsError as exc:
                     status_var = f"бд не отправлена на сервер, соединение не установлено:" \
                                  f"\n\r{exc}"
                     self.status.status.set(status_var)
