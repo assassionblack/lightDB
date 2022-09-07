@@ -46,6 +46,8 @@ Versions release note:
     2.0:
         fix bugs
         add window for configuration settings
+    2.1:
+        fix some bugs
 
 PreInstallation
 ===============

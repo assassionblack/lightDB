@@ -2,12 +2,11 @@
 module for application mainloop
 """
 import logging
-import os.path
 import tkinter.ttk
 from tkinter.messagebox import askyesno
 
-import paramiko
 from paramiko.client import SSHClient
+from paramiko.ssh_exception import NoValidConnectionsError
 from scp import SCPClient
 
 from src.common_menu import CommonMenu
@@ -27,12 +26,11 @@ def confirm_delete():
                             username=configs.settings.get("ssh").get("user"))
 
                 with SCPClient(ssh.get_transport()) as scp:
-                    scp.put('/home/assassion/ideas', 'ideas2')
-                    scp.get('ideas2')
+                    scp.put(configs.DB_NAME, 'base.db')
                 status_var = "база данных отправлена на сервер"
                 status_bar.status.set(status_var)
                 logging.info(status_var)
-            except paramiko.ssh_exception.NoValidConnectionsError as exc:
+            except NoValidConnectionsError as exc:
                 status_var = f"бд не отправлена на сервер, соединение не установлено:" \
                              f"\n\r{exc}"
                 status_bar.status.set(status_var)
