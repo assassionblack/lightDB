@@ -1,0 +1,6 @@
+logging~=0.4.9.6
+toml~=0.10.2
+Jinja2==3.1.2
+setuptools==65.3.0
+paramiko~=2.11.0
+scp~=0.14.4

@@ -1,0 +1,67 @@
+name = "lightDB"
+
+[sizes]
+width-navbar = 300
+height-navbar = 46
+width-table = 1500
+height-table = 940
+
+[styles]
+[[styles.navbar]]
+all-font = "Source Code Pro"
+all-font-size = "10"
+tree-foreground = "blue"
+heading-font = "Source Code Pro"
+heading-font-size = "12"
+heading-font-style = "bold"
+heading-foreground = "red"
+
+[[styles.table]]
+header-bg = "#09d9d9"
+header-font = "Source Code Pro"
+header-font-size = "14"
+header-font-style = "bold"
+font = "Source Code Pro"
+font-size = "12"
+font-style = "normal"
+
+[names-product-columns]
+to-form = [ "firma", "kod_tovara", "opisanie", "razmery", "tsena", "raspr", "category", "magazin", "id",]
+to-form-ru = [ "Фирма", "код", "описание", "размеры", "цена", "р", "категория", "магазин", "id",]
+to-report = [ "фирма", "код", "описание", "размеры", "цена", "р",]
+
+[report-style]
+[[report-style.magazine]]
+color = "red"
+font-weight = "bold"
+text-indent = "50px"
+font-size = "22"
+
+[[report-style.category]]
+color = "blue"
+text-indent = "100"
+font-style = "italic"
+font-size = "18"
+
+[[report-style.table]]
+border = "1px solid powderblue"
+border-collapse = "collapse"
+
+[[report-style.tr]]
+height = 10
+
+[[report-style.td-th]]
+border = "1px solid powderblue"
+font-size = "12"
+
+[report-file]
+output-name = "report"
+output-dir = "/home/assassion/Рабочий стол/"
+
+[copy]
+ssh = "false"
+
+[ssh]
+server = "192.168.1.100"
+user = "guest"
+output-file = "base.db"
